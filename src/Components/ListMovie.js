@@ -1,10 +1,11 @@
 import CardMovie from "./CardMovie"
 
-const ListMovie=({movies})=>{
+const ListMovie=({movies,search,rate,setMovies})=>{
+    const x =   movies.filter(el => el.title.toUpperCase().includes(search.toUpperCase()) && el.rating >= rate).map(el=><CardMovie el={el} movies={movies} setMovies={setMovies}/>)
     return(
         <div className="iheb">
             {
-                movies.map(el=><CardMovie el={el}/>)
+              x.length >0 ? x : <h1>Not Found</h1>
             }
         </div>
     )
